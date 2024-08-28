@@ -1,9 +1,12 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: center; */
 }
+/* body {
+  background-color: red;
+} */
 
 .logo {
   height: 6em;
@@ -39,4 +42,174 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* ---------------------------------------------------------- */
+/* ------------------------HEADER---------------------------- */
+/* ---------------------------------------------------------- */
+
+header {
+  background-color: white;
+  /* border-bottom: 1px solid black; */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 1280px;
+  margin: auto;
+}
+
+header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > div > img {
+  height: 30px;
+}
+header > div > img:hover {
+  cursor: pointer;
+}
+
+header > div input {
+  width: 590px;
+  height: 40px;
+  background-color: #f5f6f7;
+  border-radius: 5px;
+  border: none;
+  padding-left: 20px;
+}
+header > div input:hover {
+  cursor: text;
+}
+
+header > div input:focus {
+  outline: none;
+}
+header > div > div {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+header > div button:hover {
+  cursor: pointer;
+}
+
+header > div > div > button {
+  height: 30px;
+  width: 115px;
+  border: 1px solid #2cb1ba;
+  color: #2cb1ba;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+header > div > button {
+  font-size: 12px;
+  height: 30px;
+  width: 115px;
+  border: 1px solid #2cb1ba;
+  color: white;
+  background-color: #2cb1ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+/* ----------------------------------------------------------- */
+/* -------------------------HOME------------------------------ */
+/* ----------------------------------------------------------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  height: 450px;
+  background-image: url(https://lereacteur-vinted.netlify.app/assets/hero-24963eb2.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.hero .container > div {
+  height: 220px;
+  width: 360px;
+  padding: 25px;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid #c6cfd2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.hero .container > div p {
+  font-size: 32px;
+}
+
+.hero .container > div button {
+  height: 45px;
+  width: 187px;
+  background-color: #2cb1ba;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* ----------------------------------------------------------- */
+/* ---------------------HOME PHOTOS--------------------------- */
+/* ----------------------------------------------------------- */
+
+.homephotolist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.homephotolist > div {
+  background-color: grey;
+  width: calc((100% - 48px) / 5);
+}
+
+.homephotolist > div img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+}
+
+.homephoto {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------- */
+/* ----------------------OFFER------------------------------ */
+/* --------------------------------------------------------- */
+
+.offerdiv {
+  width: 1090px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.offerdiv > div {
+  width: 400px;
+  height: 600px;
+  padding: 40px;
+}
+
+.offerdiv > div > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
