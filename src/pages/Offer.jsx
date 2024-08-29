@@ -30,22 +30,56 @@ const Offer = (props) => {
         <p> Chargement ...</p>
       ) : (
         <>
-          <div className="offerdiv">
-            <img src={article.product_image[0].secure_url} alt="" />
-            <div>
-              <p>{article.product_price} €</p>
-              <p>Marque {article.product_details[0].MARQUE}</p>
-              <p>Taille {article.product_details[1].TAILLE}</p>
-              <p>Etat {article.product_details[2].ÉTAT}</p>
-              <p>Couleur {article.product_details[3].COULEUR}</p>
-              <p>Emplacement {article.product_details[4].EMPLACEMENT}</p>
-              <p>{article.product_name}</p>
-              <p>{article.product_description}</p>
-              <img src={article.owner.account.avatar.secure_url} alt="" />{" "}
-              <span>{article.owner.account.username}</span>
-              <button>Acheter</button>
+          <section className="offerbackground">
+            <div className="offerdiv">
+              <img src={article.product_image[0].secure_url} alt="" />
+              <div>
+                <div className="offerdetails">
+                  <p>{article.product_price} €</p>
+                  <p style={{ display: "flex" }}>
+                    <span style={{ flex: 1 }}>Marque</span>
+                    <span style={{ flex: 1 }}>
+                      {article.product_details[0].MARQUE}
+                    </span>
+                  </p>
+                  <p style={{ display: "flex" }}>
+                    <span style={{ flex: 1 }}>Taille</span>
+                    <span style={{ flex: 1 }}>
+                      {article.product_details[1].TAILLE}
+                    </span>
+                  </p>
+                  <p style={{ display: "flex" }}>
+                    <span style={{ flex: 1 }}>Etat</span>
+                    <span style={{ flex: 1 }}>
+                      {article.product_details[2].ÉTAT}
+                    </span>
+                  </p>
+                  <p style={{ display: "flex" }}>
+                    <span style={{ flex: 1 }}>Couleur</span>
+                    <span style={{ flex: 1 }}>
+                      {article.product_details[3].COULEUR}
+                    </span>
+                  </p>
+                  <p style={{ display: "flex" }}>
+                    <span style={{ flex: 1 }}>Emplacement</span>
+                    <span style={{ flex: 1 }}>
+                      {article.product_details[4].EMPLACEMENT}
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <p className="name">{article.product_name}</p>
+                  <p className="description">{article.product_description}</p>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+                  <img src={article.owner.account.avatar.secure_url} alt="" />{" "}
+                  <span>{article.owner.account.username}</span>
+                </div>
+                <button>Acheter</button>
+              </div>
             </div>
-          </div>
+          </section>
         </>
       )}
       {/* <Link to="/">

@@ -3,9 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center; */
+  font-family: "Roboto", "sans-serif";
 }
 /* body {
-  background-color: red;
 } */
 
 .logo {
@@ -170,17 +170,32 @@ header > div > button {
 /* ----------------------------------------------------------- */
 
 .homephotolist {
+  margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .homephotolist > div {
-  background-color: grey;
+  background-color: white;
   width: calc((100% - 48px) / 5);
 }
 
-.homephotolist > div img {
+.avatarupper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarupper > img {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.articlephoto {
   width: 100%;
   height: 330px;
   object-fit: cover;
@@ -191,9 +206,34 @@ header > div > button {
   flex-direction: column;
 }
 
+a {
+  font-size: 12px;
+  color: #999999;
+  text-decoration: none;
+}
+
+.itemdescription {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.itemdescription p:first-child {
+  color: black;
+  font-size: 14px;
+}
+
 /* --------------------------------------------------------- */
 /* ----------------------OFFER------------------------------ */
 /* --------------------------------------------------------- */
+
+.offerbackground {
+  background-color: #ebedee;
+  padding-top: 30px;
+  min-height: calc(100vh - 60px);
+}
 
 .offerdiv {
   width: 1090px;
@@ -201,15 +241,69 @@ header > div > button {
   display: flex;
   justify-content: space-between;
 }
+div.offerdiv > img:first-child {
+  height: 600px;
+  width: 450px;
+  object-fit: cover;
+}
 
 .offerdiv > div {
+  background-color: white;
   width: 400px;
   height: 600px;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.offerdiv > div > img {
+.offerdiv > div > div > img {
   width: 50px;
   height: 50px;
   object-fit: cover;
+  border-radius: 50%;
+}
+
+.offerdetails {
+  padding-bottom: 50px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #e7e7e7;
+}
+.offerdetails p:first-child {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: black;
+  font-weight: 400;
+}
+
+.offerdetails p {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+}
+
+.offerdetails p span:first-child {
+  font-weight: 400;
+  color: #999999;
+}
+
+.name {
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.description {
+  color: #666666;
+}
+
+.offerdiv button {
+  margin: 0 auto;
+  height: 45px;
+  width: 187px;
+  background-color: #2cb1ba;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
 }
