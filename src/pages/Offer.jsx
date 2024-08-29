@@ -3,17 +3,21 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 const backurl = "http://localhost:3000";
 
-const Offer = (props) => {
+const Offer = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
     const fetcharticle = async () => {
-      const response = await axios.get(`${backurl}/offer/${id}`);
-      // console.log("response.data retrieved", response.data);
-      setArticle(response.data);
-      setIsLoading(false);
+      try {
+        const response = await axios.get(`${backurl}/offer/${id}`);
+        // console.log("response.data retrieved", response.data);
+        setArticle(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        message: error.response.data;
+      }
     };
 
     fetcharticle();
@@ -36,36 +40,19 @@ const Offer = (props) => {
               <div>
                 <div className="offerdetails">
                   <p>{article.product_price} €</p>
-                  <p style={{ display: "flex" }}>
-                    <span style={{ flex: 1 }}>Marque</span>
-                    <span style={{ flex: 1 }}>
-                      {article.product_details[0].MARQUE}
-                    </span>
-                  </p>
-                  <p style={{ display: "flex" }}>
-                    <span style={{ flex: 1 }}>Taille</span>
-                    <span style={{ flex: 1 }}>
-                      {article.product_details[1].TAILLE}
-                    </span>
-                  </p>
-                  <p style={{ display: "flex" }}>
-                    <span style={{ flex: 1 }}>Etat</span>
-                    <span style={{ flex: 1 }}>
-                      {article.product_details[2].ÉTAT}
-                    </span>
-                  </p>
-                  <p style={{ display: "flex" }}>
-                    <span style={{ flex: 1 }}>Couleur</span>
-                    <span style={{ flex: 1 }}>
-                      {article.product_details[3].COULEUR}
-                    </span>
-                  </p>
-                  <p style={{ display: "flex" }}>
-                    <span style={{ flex: 1 }}>Emplacement</span>
-                    <span style={{ flex: 1 }}>
-                      {article.product_details[4].EMPLACEMENT}
-                    </span>
-                  </p>
+                  {article.product_details.map((detail, index) => {
+                    console.log(detail);
+                    return (
+                      <p style={{ display: "flex" }}>
+                        <span style={{ flex: 1 }}>
+                          {Object.keys(detail)[0]}
+                        </span>
+                        <span style={{ flex: 1 }}>
+                          {detail[Object.keys(detail)[0]]}
+                        </span>
+                      </p>
+                    );
+                  })}
                 </div>
                 <div>
                   <p className="name">{article.product_name}</p>

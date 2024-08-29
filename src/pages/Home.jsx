@@ -10,10 +10,14 @@ const Home = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const response = await axios.get(`${backurl}/offer/`);
-      console.log("response.data", response.data);
-      setData(response.data);
-      setIsLoading(false);
+      try {
+        const response = await axios.get(`${backurl}/offer/`);
+        console.log("response.data", response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        message: error.message;
+      }
     };
 
     fetchdata();
@@ -40,19 +44,26 @@ const Home = () => {
                 <div className="homephoto" key={elem._id}>
                   <Link to={`/offer/${elem._id}`}>
                     <div className="avatarupper">
-                      <img src={elem.owner.account.avatar.secure_url} alt="" />
+                      <img
+                        src={elem.owner.account.avatar.secure_url}
+                        alt={elem.owner.account.username}
+                      />
                       <span>{elem.owner.account.username}</span>
                     </div>
 
                     <img
                       className="articlephoto"
                       src={elem.product_image[0].secure_url}
-                      alt=""
+                      alt={elem.product_name}
                     />
                     <div className="itemdescription">
                       <p>{elem.product_price} €</p>
-                      <p>{elem.product_details[1].TAILLE}</p>
-                      <p>{elem.product_details[0].MARQUE}</p>
+                      {elem.product_details[1].TAILLE && (
+                        <p>{elem.product_details[1].TAILLE}</p>
+                      )}
+                      {elem.product_details[0].MARQUE && (
+                        <p>{elem.product_details[0].MARQUE}</p>
+                      )}
                     </div>
                   </Link>
                 </div>

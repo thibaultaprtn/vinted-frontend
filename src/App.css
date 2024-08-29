@@ -67,10 +67,10 @@ header > div {
   align-items: center;
 }
 
-header > div > img {
+header > div img {
   height: 30px;
 }
-header > div > img:hover {
+header > div img:hover {
   cursor: pointer;
 }
 
@@ -89,7 +89,7 @@ header > div input:hover {
 header > div input:focus {
   outline: none;
 }
-header > div > div {
+header > div div {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -99,7 +99,7 @@ header > div button:hover {
   cursor: pointer;
 }
 
-header > div > div > button {
+header > div div button {
   height: 30px;
   width: 115px;
   border: 1px solid #2cb1ba;
@@ -111,13 +111,26 @@ header > div > div > button {
   border-radius: 5px;
 }
 
-header > div > button {
+header div > button {
   font-size: 12px;
   height: 30px;
   width: 115px;
   border: 1px solid #2cb1ba;
   color: white;
   background-color: #2cb1ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+#logout {
+  font-size: 12px;
+  height: 30px;
+  width: 115px;
+  border: 1px solid #c2185a;
+  color: white;
+  background-color: #c2185a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,9 +311,9 @@ div.offerdiv > img:first-child {
 }
 
 .offerdiv button {
-  margin: 0 auto;
+  margin: 0auto 0;
   height: 45px;
-  width: 187px;
+  width: auto;
   background-color: #2cb1ba;
   color: white;
   font-size: 15px;
