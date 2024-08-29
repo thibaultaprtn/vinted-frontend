@@ -6,7 +6,7 @@ const backurl = "http://localhost:3000";
 import Cookies from "js-cookie";
 import { IoClose } from "react-icons/io5";
 
-const Loginmodal = ({ setdisplayLogin }) => {
+const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const navigate = useNavigate();
@@ -26,14 +26,20 @@ const Loginmodal = ({ setdisplayLogin }) => {
             const response = await axios.post(`${backurl}/user/login`, req);
             Cookies.set("token", response.data.token, { expires: 7 });
             // navigate("/");
-            setdisplayLogin(false);
+            setDisplayLogin(false);
           } catch (error) {
             console.log(error.response.data);
             return alert(error.response.data.message);
           }
         }}
       >
-        <h1>Se connecter</h1>
+        <IoClose
+          style={{ alignSelf: "flex-end" }}
+          onClick={() => {
+            setDisplayLogin(false);
+          }}
+        />
+        <h2>Se connecter</h2>
         <input
           type="email"
           placeholder="Email"
@@ -50,15 +56,18 @@ const Loginmodal = ({ setdisplayLogin }) => {
             setPwd(event.target.value);
           }}
         />
-        <button type="submit"> Se connecter</button>
-        <Link to="/signup">
-          <button> Pas encore de compte ? Inscris-toi !</button>
-        </Link>
-        <IoClose
+        <button id="loginmodalbutton" type="submit">
+          {" "}
+          Se connecter
+        </button>
+        <p
           onClick={() => {
-            setdisplayLogin(false);
+            setDisplaySignup(true);
+            setDisplayLogin(false);
           }}
-        />
+        >
+          Pas encore de compte ? Inscris-toi !
+        </p>
       </form>
     </>
   );

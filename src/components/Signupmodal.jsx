@@ -6,7 +6,7 @@ const backurl = "http://localhost:3000";
 import Cookies from "js-cookie";
 import { IoClose } from "react-icons/io5";
 
-const Signupmodal = ({ setdisplaySignup }) => {
+const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
@@ -31,7 +31,7 @@ const Signupmodal = ({ setdisplaySignup }) => {
             // console.log("test");
             // console.log("response.data.token", response.data.token);
             Cookies.set("token", response.data.token, { expires: 7 });
-            setdisplaySignup(false);
+            setDisplaySignup(false);
             // navigate("/");
           } catch (error) {
             console.log(error.response.data);
@@ -39,7 +39,14 @@ const Signupmodal = ({ setdisplaySignup }) => {
           }
         }}
       >
-        <h1>s'inscrire</h1>
+        <p style={{ alignSelf: "flex-end", fontSize: 20 }}>
+          <IoClose
+            onClick={() => {
+              setDisplaySignup(false);
+            }}
+          />
+        </p>
+        <h2>S'inscrire</h2>
         <input
           type="text"
           placeholder="Nom d'utilisateur"
@@ -64,23 +71,34 @@ const Signupmodal = ({ setdisplaySignup }) => {
             setPwd(event.target.value);
           }}
         />
-        <input
-          type="checkbox"
-          placeholder="Newsletter"
-          onClick={(event) => {
-            // console.log("checkbox value ==>", event.target.checked);
-            setNewsletter(event.target.checked);
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: 15,
+            marginTop: 20,
+            marginBottom: 20,
           }}
-        />
+        >
+          <input
+            id="checkboxnewsletter"
+            type="checkbox"
+            placeholder="Newsletter"
+            onClick={(event) => {
+              // console.log("checkbox value ==>", event.target.checked);
+              setNewsletter(event.target.checked);
+            }}
+          />{" "}
+          <span style={{ fontSize: 13 }}>Souscrire à la newsletter</span>
+        </div>
         <button type="submit"> S'inscrire</button>
-        <Link to="/login">
-          <button> Tu as déjà un compte ? Connecte-toi !</button>
-        </Link>
-        <IoClose
+        <p
           onClick={() => {
-            setdisplaySignup(false);
+            setDisplayLogin(true), setDisplaySignup(false);
           }}
-        />
+        >
+          Tu as déjà un compte ? Connecte-toi !
+        </p>
       </form>
     </>
   );

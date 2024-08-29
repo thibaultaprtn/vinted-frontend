@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
-  const { setdisplaySignup, setdisplayLogin } = props;
+  const { setDisplaySignup, setDisplayLogin } = props;
   const navigate = useNavigate();
   return (
     <header>
@@ -33,14 +33,14 @@ const Header = (props) => {
             <div>
               <button
                 onClick={() => {
-                  setdisplaySignup(true);
+                  setDisplaySignup(true);
                 }}
               >
                 S'inscrire
               </button>
               <button
                 onClick={() => {
-                  setdisplayLogin(true);
+                  setDisplayLogin(true);
                 }}
               >
                 Se connecter

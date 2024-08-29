@@ -37,11 +37,21 @@ function App() {
   return (
     <>
       <Router>
-        {displaySignup && <Signupmodal setdisplaySignup={setDisplaySignup} />}
-        {displayLogin && <Loginmodal setdisplayLogin={setDisplayLogin} />}
+        {displaySignup && (
+          <Signupmodal
+            setDisplaySignup={setDisplaySignup}
+            setDisplayLogin={setDisplayLogin}
+          />
+        )}
+        {displayLogin && (
+          <Loginmodal
+            setDisplayLogin={setDisplayLogin}
+            setDisplaySignup={setDisplaySignup}
+          />
+        )}
         <Header
-          setdisplaySignup={setDisplaySignup}
-          setdisplayLogin={setDisplayLogin}
+          setDisplaySignup={setDisplaySignup}
+          setDisplayLogin={setDisplayLogin}
         />
         <Routes>
           <Route path="/" element={<Home />} />
