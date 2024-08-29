@@ -4,16 +4,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const backurl = "http://localhost:3000";
 import Cookies from "js-cookie";
+import { IoClose } from "react-icons/io5";
 
-const Signup = () => {
+const Signupmodal = ({ setdisplaySignup }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const navigate = useNavigate();
   return (
-    <div>
+    <>
+      <div className="backgroundmodal"> </div>
       <form
+        className="form"
         action=""
         onSubmit={async (event) => {
           event.preventDefault();
@@ -28,7 +31,8 @@ const Signup = () => {
             // console.log("test");
             // console.log("response.data.token", response.data.token);
             Cookies.set("token", response.data.token, { expires: 7 });
-            navigate("/");
+            setdisplaySignup(false);
+            // navigate("/");
           } catch (error) {
             console.log(error.response.data);
             return alert(error.response.data.message);
@@ -72,9 +76,14 @@ const Signup = () => {
         <Link to="/login">
           <button> Tu as déjà un compte ? Connecte-toi !</button>
         </Link>
+        <IoClose
+          onClick={() => {
+            setdisplaySignup(false);
+          }}
+        />
       </form>
-    </div>
+    </>
   );
 };
 
-export default Signup;
+export default Signupmodal;

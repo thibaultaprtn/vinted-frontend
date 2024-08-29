@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // Composants
 
 import Header from "./components/Header";
+import Signupmodal from "./components/Signupmodal";
+import Loginmodal from "./components/Loginmodal";
 
 // Pages
 
@@ -16,6 +18,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
 function App() {
+  const [displayLogin, setDisplayLogin] = useState(false);
+  const [displaySignup, setDisplaySignup] = useState(false);
   // const [isLoading, setIsLoading] = useState(true);
   // const [data, setData] = useState([]);
 
@@ -33,12 +37,17 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
+        {displaySignup && <Signupmodal setdisplaySignup={setDisplaySignup} />}
+        {displayLogin && <Loginmodal setdisplayLogin={setDisplayLogin} />}
+        <Header
+          setdisplaySignup={setDisplaySignup}
+          setdisplayLogin={setDisplayLogin}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/offer/:id" element={<Offer />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} /> */}
         </Routes>
       </Router>
     </>

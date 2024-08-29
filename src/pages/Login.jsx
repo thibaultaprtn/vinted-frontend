@@ -25,8 +25,8 @@ const Login = () => {
               Cookies.set("token", response.data.token, { expires: 7 });
               navigate("/");
             } catch (error) {
-              return alert(error.response.data);
-              console.log(error.reponse.data);
+              console.log(error.response.data);
+              return alert(error.response.data.message);
             }
           }}
         >

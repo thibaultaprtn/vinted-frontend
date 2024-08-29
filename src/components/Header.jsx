@@ -3,7 +3,8 @@ import Signup from "../pages/Signup";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+  const { setdisplaySignup, setdisplayLogin } = props;
   const navigate = useNavigate();
   return (
     <header>
@@ -30,12 +31,20 @@ const Header = () => {
             </button>
           ) : (
             <div>
-              <Link to="/signup">
-                <button> S'inscrire </button>
-              </Link>
-              <Link to="/login">
-                <button> Se connecter </button>
-              </Link>
+              <button
+                onClick={() => {
+                  setdisplaySignup(true);
+                }}
+              >
+                S'inscrire
+              </button>
+              <button
+                onClick={() => {
+                  setdisplayLogin(true);
+                }}
+              >
+                Se connecter
+              </button>
             </div>
           )}
         </>
