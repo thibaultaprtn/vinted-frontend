@@ -9,6 +9,7 @@ import { IoClose } from "react-icons/io5";
 const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   return (
     <>
@@ -17,6 +18,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
         className="form"
         action=""
         onSubmit={async (event) => {
+          setErrorMessage("");
           event.preventDefault();
           try {
             const req = {
@@ -29,7 +31,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
             setDisplayLogin(false);
           } catch (error) {
             console.log(error.response.data);
-            return alert(error.response.data.message);
+            setErrorMessage(error.response.data.message);
           }
         }}
       >
@@ -56,6 +58,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
             setPwd(event.target.value);
           }}
         />
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <button id="loginmodalbutton" type="submit">
           {" "}
           Se connecter

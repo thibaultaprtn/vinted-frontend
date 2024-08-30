@@ -7,7 +7,10 @@ import { GrFormNext } from "react-icons/gr";
 import { GrFormPrevious } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 
-const Home = () => {
+const Search = () => {
+  const { search } = useParams();
+  console.log("search", search);
+
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -16,7 +19,9 @@ const Home = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await axios.get(`${backurl}/offer?page=${page}`);
+        const response = await axios.get(
+          `${backurl}/offer?title=${search}&page=${page}`
+        );
         console.log("response.data", response.data);
         setData(response.data[1]);
         setLength(response.data[0]);
@@ -106,4 +111,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Search;

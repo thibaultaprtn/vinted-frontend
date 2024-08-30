@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import Signup from "../pages/Signup";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Header = (props) => {
   const { setDisplaySignup, setDisplayLogin } = props;
+
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
   return (
     <header>
       <div className="container">
@@ -15,8 +18,23 @@ const Header = (props) => {
             alt="logo-vinted"
           />
         </Link>
-        <form action="">
-          <input type="text" placeholder="Rechercher des articles..." />
+        <form
+          action=""
+          onSubmit={(event) => {
+            // event.preventDefault();
+            navigate(`/search/${search}`);
+            // setSearch("");
+            // console.log(`/search/${search}`);
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Rechercher des articles..."
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          />
         </form>
         <>
           {Cookies.get("token") ? (

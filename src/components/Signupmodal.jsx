@@ -11,7 +11,15 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
+  // possible de faire une fonction handleSubmit qui permet de simplifier un peu le code
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  // };
+
   return (
     <>
       <div className="backgroundmodal"> </div>
@@ -19,6 +27,7 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
         className="form"
         action=""
         onSubmit={async (event) => {
+          setErrorMessage("");
           event.preventDefault();
           try {
             const req = {
@@ -35,7 +44,8 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
             // navigate("/");
           } catch (error) {
             console.log(error.response.data);
-            return alert(error.response.data.message);
+            setErrorMessage(error.response.data.message);
+            // return alert(error.response.data.message);
           }
         }}
       >
@@ -91,6 +101,7 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
           />{" "}
           <span style={{ fontSize: 13 }}>Souscrire à la newsletter</span>
         </div>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <button type="submit"> S'inscrire</button>
         <p
           onClick={() => {

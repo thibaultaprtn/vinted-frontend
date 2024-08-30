@@ -14,8 +14,9 @@ import Loginmodal from "./components/Loginmodal";
 
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Search from "./pages/Search";
+// import Signup from "./pages/Signup";
+// import Login from "./pages/Login";
 
 function App() {
   const [displayLogin, setDisplayLogin] = useState(false);
@@ -55,6 +56,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search/:search" element={<Search />} />
           <Route path="/offer/:id" element={<Offer />} />
           {/* <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} /> */}

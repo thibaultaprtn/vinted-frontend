@@ -328,6 +328,36 @@ a {
   font-size: 14px;
 }
 
+.nextbutton {
+  background-color: white;
+  border-radius: 50%;
+  font-size: 60px;
+  position: absolute;
+  top: 40%;
+  right: 2%;
+}
+
+.nextbutton:hover {
+  font-size: 70px;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.previousbutton {
+  background-color: white;
+  border-radius: 50%;
+  font-size: 60px;
+  position: absolute;
+  top: 40%;
+  left: 2%;
+}
+
+.previousbutton:hover {
+  font-size: 70px;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
 /* --------------------------------------------------------- */
 /* ----------------------OFFER------------------------------ */
 /* --------------------------------------------------------- */
