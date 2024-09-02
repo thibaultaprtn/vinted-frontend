@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import Header from "./components/Header";
 import Signupmodal from "./components/Signupmodal";
 import Loginmodal from "./components/Loginmodal";
+import Successpublish from "./components/SuccessPublish";
 
 // Pages
 
@@ -21,6 +22,7 @@ import Publish from "./pages/Publish";
 function App() {
   const [displayLogin, setDisplayLogin] = useState(false);
   const [displaySignup, setDisplaySignup] = useState(false);
+  const [displaySuccessPublish, setDisplaySuccessPublish] = useState(false);
   const [search, setSearch] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || null);
   // const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +54,13 @@ function App() {
             setDisplaySignup={setDisplaySignup}
           />
         )}
+
+        {displaySuccessPublish && (
+          <Successpublish
+            displaySuccessPublish={displaySuccessPublish}
+            setDisplaySuccessPublish={setDisplaySuccessPublish}
+          />
+        )}
         <Header
           setDisplaySignup={setDisplaySignup}
           setDisplayLogin={setDisplayLogin}
@@ -67,7 +76,12 @@ function App() {
           />
           <Route path="/search/:search" element={<Search />} />
           <Route path="/offer/:id" element={<Offer />} />
-          <Route path="/publish" element={<Publish />} />
+          <Route
+            path="/publish"
+            element={
+              <Publish setDisplaySuccessPublish={setDisplaySuccessPublish} />
+            }
+          />
           {/* <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} /> */}
         </Routes>

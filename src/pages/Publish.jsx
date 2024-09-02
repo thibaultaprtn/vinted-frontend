@@ -4,10 +4,11 @@ import "../styles/publish.css";
 import { SiZebpay } from "react-icons/si";
 const backurl = "http://localhost:3000";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-const Publish = () => {
+const Publish = ({ setDisplaySuccessPublish }) => {
   // Idée : Faire un handclick event
-
+  const navigate = useNavigate();
   const [body, setBody] = useState({
     title: "",
     description: "",
@@ -30,17 +31,22 @@ const Publish = () => {
 
   const [pictures, setPictures] = useState(null);
 
+  const [isWaiting, setIsWaiting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // faire un append global pour toutes les paires clef/valeur
+    // faire un menu déroulant pour le champ état
+    setIsWaiting(true);
     try {
       const formData = new FormData();
-      formData.append("name", body.name);
+      formData.append("title", body.title);
       formData.append("description", body.description);
       formData.append("price", body.price);
       formData.append("brand", body.brand);
       formData.append("size", body.size);
       formData.append("condition", body.condition);
-      formData.append("colors", body.color);
+      formData.append("color", body.color);
       formData.append("city", body.city);
 
       for (const pic of pictures) {
@@ -62,8 +68,13 @@ const Publish = () => {
       );
 
       console.log(response);
+
+      setDisplaySuccessPublish(true);
+      navigate(`/offer/${response.data._id}`);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsWaiting(false);
     }
   };
 
@@ -76,10 +87,20 @@ const Publish = () => {
             type="file"
             multiple="multiple"
             onChange={(event) => {
-              console.log(event.target.files);
-              console.log(event.target.files[0]);
-              const tab = [...event.target.files];
-              setPictures(tab);
+              // console.log(
+              //   "type of event.target.files",
+              //   typeof event.target.files
+              // );
+              // console.log(
+              //   "est ce que event.target.files est un tableau ?",
+              //   Array.isArray(event.target.files)
+              // );
+              // console.log(event.target.files);
+              // console.log(event.target.files);
+              // console.log(event.target.files[0]);
+              // const tab = [...event.target.files];
+              setPictures(event.target.files);
+              // console.log(typeof pictures);
             }}
           />
         </div>
@@ -186,7 +207,9 @@ const Publish = () => {
           </p>
           <input type="checkbox" />
         </div>
-        <button type="submit"> Soumettre </button>
+        <button disable={isWaiting} type="submit">
+          Soumettre
+        </button>
       </form>
     </div>
   );

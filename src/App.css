@@ -153,6 +153,22 @@ header div > button {
   align-items: center;
 }
 
+.successbox {
+  position: fixed;
+  top: 20vh;
+  left: 40vw;
+  width: 20vw;
+  height: 50vh;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 20;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 .form {
   position: fixed;
   top: 20vh;
