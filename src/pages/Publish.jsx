@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "../styles/publish.css";
 import { SiZebpay } from "react-icons/si";
 const backurl = "http://localhost:3000";
+import Cookies from "js-cookie";
 
 const Publish = () => {
   // Idée : Faire un handclick event
@@ -29,20 +30,60 @@ const Publish = () => {
 
   const [pictures, setPictures] = useState(null);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("name", body.name);
+      formData.append("description", body.description);
+      formData.append("price", body.price);
+      formData.append("brand", body.brand);
+      formData.append("size", body.size);
+      formData.append("condition", body.condition);
+      formData.append("colors", body.color);
+      formData.append("city", body.city);
+
+      for (const pic of pictures) {
+        console.log("pic", pic);
+        formData.append("picture", pic);
+      }
+
+      // console.log("formData==>", formData);
+
+      const response = await axios.post(
+        "http://localhost:3000/offer/publish",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          console.log("event.target=>", event);
-          // setPicture(e.target.files[0])
-          // event.target[0].files
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <div style={{ display: "flex" }}>
-          <input style={{ flexShrink: 0 }} type="file" />
+          <input
+            style={{ flexShrink: 0 }}
+            type="file"
+            multiple="multiple"
+            onChange={(event) => {
+              console.log(event.target.files);
+              console.log(event.target.files[0]);
+              const tab = [...event.target.files];
+              setPictures(tab);
+            }}
+          />
         </div>
-        {/* <div>
+        <div>
           <p>
             <span>Titre</span>
             <input
@@ -144,7 +185,7 @@ const Publish = () => {
             />
           </p>
           <input type="checkbox" />
-        </div> */}
+        </div>
         <button type="submit"> Soumettre </button>
       </form>
     </div>
