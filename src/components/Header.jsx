@@ -2,13 +2,24 @@ import { Link } from "react-router-dom";
 import Signup from "../pages/Signup";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Header = (props) => {
-  const { setDisplaySignup, setDisplayLogin } = props;
+const Header = ({
+  setDisplaySignup,
+  setDisplayLogin,
+  search,
+  setSearch,
+  token,
+  setToken,
+}) => {
+  const [displayMessage, setDisplayMessage] = useState("");
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() => setDisplayMessage(search), 500);
+    return () => clearTimeout(timeOutId);
+  }, [search]);
 
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
   return (
     <header>
       <div className="container">
@@ -18,24 +29,14 @@ const Header = (props) => {
             alt="logo-vinted"
           />
         </Link>
-        <form
-          action=""
-          onSubmit={(event) => {
-            // event.preventDefault();
-            navigate(`/search/${search}`);
-            // setSearch("");
-            // console.log(`/search/${search}`);
+        <input
+          type="text"
+          placeholder="Rechercher des articles..."
+          value={search}
+          onChange={(event) => {
+            setSearch(event.target.value);
           }}
-        >
-          <input
-            type="text"
-            placeholder="Rechercher des articles..."
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-          />
-        </form>
+        />
         <>
           {Cookies.get("token") ? (
             <button
@@ -67,7 +68,18 @@ const Header = (props) => {
           )}
         </>
 
-        <button> Vends tes articles </button>
+        <button
+          onClick={() => {
+            {
+              Cookies.get("token")
+                ? navigate("/publish")
+                : setDisplayLogin(true);
+            }
+          }}
+        >
+          {" "}
+          Vends tes articles{" "}
+        </button>
       </div>
     </header>
   );

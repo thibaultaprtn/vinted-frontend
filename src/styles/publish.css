@@ -1,0 +1,35 @@
+body {
+  background-color: #eaedef;
+}
+
+.container2 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+form {
+  padding: 30px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+form > div {
+  padding: 20px;
+  background-color: white;
+  width: 100%;
+}
+
+form > div > p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+form > div > p > span {
+  flex: 1;
+}
+form > div > p > input {
+  flex: 1;
+}
