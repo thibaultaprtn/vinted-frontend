@@ -27,7 +27,11 @@ function MyDropzone() {
   );
 }
 
-const Publish = ({ setDisplaySuccessPublish }) => {
+const Publish = ({
+  setDisplaySuccessPublish,
+  displayLogin,
+  setDisplayLogin,
+}) => {
   //TODO Faire un useEffect qui permette d'ouvrir le login si jamais le cookies n'est pas présent
   // Idée : Faire un handclick event
   const navigate = useNavigate();
@@ -94,6 +98,8 @@ const Publish = ({ setDisplaySuccessPublish }) => {
       setIsWaiting(false);
     }
   };
+
+  // TODO Rajouter un state token qui soit pris en compte dans un useEffect qui redirige vers home si jamais on est sur cette page et que le token est faux
 
   return (
     <div className="container">

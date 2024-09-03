@@ -17,6 +17,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Search from "./pages/Search";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 // import Signup from "./pages/Signup";
 // import Login from "./pages/Login";
 
@@ -96,13 +97,26 @@ function App() {
             }
           />
           <Route path="/search/:search" element={<Search />} />
-          <Route path="/offer/:id" element={<Offer />} />
+          <Route
+            path="/offer/:id"
+            element={
+              <Offer
+                setDisplayLogin={setDisplayLogin}
+                displayLogin={displayLogin}
+              />
+            }
+          />
           <Route
             path="/publish"
             element={
-              <Publish setDisplaySuccessPublish={setDisplaySuccessPublish} />
+              <Publish
+                setDisplaySuccessPublish={setDisplaySuccessPublish}
+                setDisplayLogin={setDisplayLogin}
+                displayLogin={displayLogin}
+              />
             }
           />
+          <Route path="/payment" element={<Payment />} />
           {/* <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} /> */}
         </Routes>

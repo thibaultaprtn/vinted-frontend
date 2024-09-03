@@ -28,6 +28,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
             const response = await axios.post(`${backurl}/user/login`, req);
             Cookies.set("token", response.data.token, { expires: 7 });
             // navigate("/");
+            // TODO Est ce qu'il vaut mieux aller sur Publish ou sur Home à ce moment la ?
             navigate("/publish");
             setDisplayLogin(false);
           } catch (error) {

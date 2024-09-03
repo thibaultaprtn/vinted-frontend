@@ -23,6 +23,7 @@ const Header = ({
   const [displayMessage, setDisplayMessage] = useState("");
   const sortOptions = ["Prix Croissant", "Prix Décroissant"];
 
+  // TODO Implémenter le temps d'attente avant le rafraichissement de la page
   useEffect(() => {
     const timeOutId = setTimeout(() => setDisplayMessage(search), 500);
     return () => clearTimeout(timeOutId);

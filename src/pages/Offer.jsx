@@ -2,11 +2,14 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 const backurl = import.meta.env.VITE_BACKURL;
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-const Offer = () => {
+const Offer = ({ setDisplayLogin }) => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetcharticle = async () => {
@@ -22,6 +25,8 @@ const Offer = () => {
 
     fetcharticle();
   }, []);
+
+  console.log("article", article);
 
   // console.log("id", id);
   // console.log("props dans offer", props.data);
@@ -41,9 +46,9 @@ const Offer = () => {
                 <div className="offerdetails">
                   <p>{article.product_price} €</p>
                   {article.product_details.map((detail, index) => {
-                    console.log(detail);
+                    // console.log(detail);
                     return (
-                      <p style={{ display: "flex" }}>
+                      <p key={index} style={{ display: "flex" }}>
                         <span style={{ flex: 1 }}>
                           {Object.keys(detail)[0]}
                         </span>
@@ -58,12 +63,27 @@ const Offer = () => {
                   <p className="name">{article.product_name}</p>
                   <p className="description">{article.product_description}</p>
                 </div>
-
                 <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                   <img src={article.owner.account.avatar.secure_url} alt="" />{" "}
                   <span>{article.owner.account.username}</span>
                 </div>
-                <button>Acheter</button>
+                <button
+                  onClick={() => {
+                    if (Cookies.get("token")) {
+                      console.log(Cookies.get("token"));
+                      navigate("/payment", {
+                        state: {
+                          title: article.product_name,
+                          price: article.product_price,
+                        },
+                      });
+                    } else {
+                      setDisplayLogin(true);
+                    }
+                  }}
+                >
+                  Acheter
+                </button>
               </div>
             </div>
           </section>
