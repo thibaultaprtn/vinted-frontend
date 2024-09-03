@@ -24,7 +24,10 @@ function App() {
   const [displaySignup, setDisplaySignup] = useState(false);
   const [displaySuccessPublish, setDisplaySuccessPublish] = useState(false);
   const [search, setSearch] = useState("");
-  const [token, setToken] = useState(Cookies.get("token") || null);
+  const [priceMin, setPriceMin] = useState("");
+  const [priceMax, setPriceMax] = useState("");
+  const [sort, setSort] = useState("");
+  // const [token, setToken] = useState(Cookies.get("token") || null);
   // const [isLoading, setIsLoading] = useState(true);
   // const [data, setData] = useState([]);
 
@@ -66,13 +69,30 @@ function App() {
           setDisplayLogin={setDisplayLogin}
           search={search}
           setSearch={setSearch}
-          token={token}
-          setToken={setToken}
+          priceMin={priceMin}
+          setPriceMin={setPriceMin}
+          priceMax={priceMax}
+          setPriceMax={setPriceMax}
+          sort={sort}
+          setSort={setSort}
+          // token={token}
+          // setToken={setToken}
         />
         <Routes>
           <Route
             path="/"
-            element={<Home search={search} setSearch={setSearch} />}
+            element={
+              <Home
+                search={search}
+                setSearch={setSearch}
+                priceMin={priceMin}
+                setPriceMin={setPriceMin}
+                priceMax={priceMax}
+                setPriceMax={setPriceMax}
+                sort={sort}
+                setSort={setSort}
+              />
+            }
           />
           <Route path="/search/:search" element={<Search />} />
           <Route path="/offer/:id" element={<Offer />} />

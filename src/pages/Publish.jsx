@@ -5,6 +5,26 @@ import { SiZebpay } from "react-icons/si";
 const backurl = "http://localhost:3000";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import React, { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+
+function MyDropzone() {
+  const onDrop = useCallback((acceptedFiles) => {
+    // Do something with the files
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  return (
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {isDragActive ? (
+        <p>Drop the files here ...</p>
+      ) : (
+        <p>Drag 'n' drop some files here, or click to select files</p>
+      )}
+    </div>
+  );
+}
 
 const Publish = ({ setDisplaySuccessPublish }) => {
   // Idée : Faire un handclick event
@@ -81,6 +101,7 @@ const Publish = ({ setDisplaySuccessPublish }) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
+        {/* {MyDropzone()} */}
         <div style={{ display: "flex" }}>
           <input
             style={{ flexShrink: 0 }}
@@ -118,7 +139,8 @@ const Publish = ({ setDisplaySuccessPublish }) => {
             />
           </p>
           <p>
-            <span>Décris ton article</span>{" "}
+            <span>Décris ton article</span>
+            {/* TODO Remplacer par un text_area */}
             <input
               type="text"
               value={body.description}
@@ -196,7 +218,7 @@ const Publish = ({ setDisplaySuccessPublish }) => {
           <p>
             <span>Prix</span>{" "}
             <input
-              type="text"
+              type="number"
               value={body.price}
               onChange={(event) => {
                 const tab = { ...body };

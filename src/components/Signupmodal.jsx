@@ -12,6 +12,9 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
   const [pwd, setPwd] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [picture, setPicture] = useState(null);
+
   const navigate = useNavigate();
 
   // possible de faire une fonction handleSubmit qui permet de simplifier un peu le code
@@ -30,13 +33,23 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
           setErrorMessage("");
           event.preventDefault();
           try {
-            const req = {
-              username: username,
-              email: email,
-              password: pwd,
-              newsletter: newsletter,
-            };
-            const response = await axios.post(`${backurl}/user/signup`, req);
+            const formData = new FormData();
+            formData.append("username", username);
+            formData.append("email", email);
+            formData.append("password", pwd);
+            formData.append("newsletter", newsletter);
+            formData.append("picture", picture);
+
+            // const req = {
+            //   username: username,
+            //   email: email,
+            //   password: pwd,
+            //   newsletter: newsletter,
+            // };
+            const response = await axios.post(
+              `${backurl}/user/signup`,
+              formData
+            );
             // console.log("test");
             // console.log("response.data.token", response.data.token);
             Cookies.set("token", response.data.token, { expires: 7 });
@@ -79,6 +92,13 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
           value={pwd}
           onChange={(event) => {
             setPwd(event.target.value);
+          }}
+        />
+
+        <input
+          type="file"
+          onChange={(event) => {
+            setPicture(event.target.files[0]);
           }}
         />
         <div

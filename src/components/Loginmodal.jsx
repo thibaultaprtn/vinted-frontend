@@ -28,6 +28,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
             const response = await axios.post(`${backurl}/user/login`, req);
             Cookies.set("token", response.data.token, { expires: 7 });
             // navigate("/");
+            navigate("/publish");
             setDisplayLogin(false);
           } catch (error) {
             console.log(error.response.data);

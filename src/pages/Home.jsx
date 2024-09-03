@@ -8,7 +8,8 @@ import { GrFormPrevious } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 
 const Home = (props) => {
-  const { search, setSearch } = props;
+  const { search, setSearch, priceMin, priceMax, sort } = props;
+  console.log("pricemax", priceMax);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -18,7 +19,7 @@ const Home = (props) => {
     const fetchdata = async () => {
       try {
         const response = await axios.get(
-          `${backurl}/offer?page=${page}&title=${search}`
+          `${backurl}/offer?page=${page}&title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
         );
         console.log("response.data", response.data);
         setData(response.data[1]);
@@ -30,7 +31,7 @@ const Home = (props) => {
     };
 
     fetchdata();
-  }, [page, search]);
+  }, [page, search, priceMin, priceMax, sort]);
 
   console.log(isLoading);
   return (
