@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// require("dotenv").config();
 import Cookies from "js-cookie";
 
 // Composants

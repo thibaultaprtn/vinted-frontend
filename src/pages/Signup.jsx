@@ -2,7 +2,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const backurl = process.env.BACKURL;
+const backurl = import.meta.env.VITE_BACKURL;
 import Cookies from "js-cookie";
 
 const Signup = () => {

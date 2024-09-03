@@ -5,9 +5,9 @@ import { SiZebpay } from "react-icons/si";
 import Cookies from "js-cookie";
 import { useNavigate, Navigate } from "react-router-dom";
 import React, { useCallback } from "react";
-import { Dropzone, useDropzone } from "react-dropzone";
+// import { Dropzone, useDropzone } from "react-dropzone";
 
-const backurl = process.env.BACKURL;
+const backurl = import.meta.env.VITE_BACKURL;
 
 function MyDropzone() {
   const onDrop = useCallback((acceptedFiles) => {

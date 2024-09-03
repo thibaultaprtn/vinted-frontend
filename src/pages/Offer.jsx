@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-const backurl = process.env.BACKURL;
+const backurl = import.meta.env.VITE_BACKURL;
 
 const Offer = () => {
   const { id } = useParams();

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
-const backurl = process.env.BACKURL;
+const backurl = import.meta.env.VITE_BACKURL;
 import { GrFormNext } from "react-icons/gr";
 import { GrFormPrevious } from "react-icons/gr";
 import { useParams } from "react-router-dom";
