@@ -103,7 +103,7 @@ const Publish = ({
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form className="publishform" onSubmit={handleSubmit}>
         {/* {MyDropzone()} */}
         <div style={{ display: "flex" }}>
           {/* html for est l'id auquel on veut le lier */}

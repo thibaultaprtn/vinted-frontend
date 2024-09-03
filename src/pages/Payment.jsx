@@ -1,3 +1,5 @@
+import "../styles/payment.css";
+
 import { useLocation } from "react-router-dom";
 
 import { loadStripe } from "@stripe/stripe-js";
@@ -13,20 +15,45 @@ const Payment = () => {
 
   const location = useLocation();
   const { title, price } = location.state;
+  const pricetot = Number((price + 1.2).toFixed(2));
   console.log("price", price, typeof price);
+  console.log(Number(price));
+  console.log("pricetot", pricetot, typeof pricetot);
 
   const options = {
     mode: "payment",
-    amount: price,
+    amount: Number((pricetot * 100).toFixed(0)),
     currency: "eur",
   };
 
   return (
     // Le composant Elements doit contenir toute notre logique de paiement
     // On lui donner la preuve que nous sommes connectés et les options de paiement
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm title={title} price={price} />
-    </Elements>
+    <div className="paymentform">
+      <p>Résumé de la commande</p>
+      <p style={{ display: "flex", justifyContent: "space-between" }}>
+        <span>Commande</span> <span>{price}</span>
+      </p>
+      <p style={{ display: "flex", justifyContent: "space-between" }}>
+        <span>Frais protection acheteurs</span> <span>0.40 €</span>
+      </p>
+      <p style={{ display: "flex", justifyContent: "space-between" }}>
+        <span>Frais de port</span> <span>0.80 €</span>
+      </p>
+
+      <p style={{ display: "flex", justifyContent: "space-between" }}>
+        <span>Total</span> <span>{pricetot} €</span>
+      </p>
+
+      <p>
+        Il ne vous reste plus qu'une étape pour vous offrir <span>{title}</span>
+        . Vous allez payer <span>{pricetot} € </span>(frais de protextion et
+        frais de port inclus).
+      </p>
+      <Elements stripe={stripePromise} options={options}>
+        <CheckoutForm title={title} price={pricetot} />
+      </Elements>
+    </div>
   );
 };
 

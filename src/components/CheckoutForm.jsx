@@ -62,7 +62,7 @@ const CheckoutForm = ({ title, price }) => {
         clientSecret: clientSecret,
         // une éventuelle redirection
         confirmParams: {
-          return_url: "http://localhost:5173/",
+          return_url: `${backurl}`,
         },
         // on ne veut pas de redirection automatique
         redirect: "if_required",
@@ -84,6 +84,7 @@ const CheckoutForm = ({ title, price }) => {
     setIsPaying(false);
   };
 
+  //   TODO Rajouter une requête Put qui rajoute un paramètre à l'article indiquant qu'il est vendu puis rajouter ce paramètre dans les filtres
   return success ? (
     <p>Merci pour votre achat !</p>
   ) : (
