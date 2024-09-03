@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import Header from "./components/Header";
 import Signupmodal from "./components/Signupmodal";
 import Loginmodal from "./components/Loginmodal";
-import Successpublish from "./components/SuccessPublish";
+import Successpublish from "./components/Successpublish";
 
 // Pages
 
