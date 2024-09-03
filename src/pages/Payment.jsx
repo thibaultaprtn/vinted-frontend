@@ -8,7 +8,9 @@ import CheckoutForm from "../components/CheckoutForm";
 
 const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 
-const stripePromise = loadStripe(stripePublicKey);
+const stripePromise = loadStripe(
+  "pk_test_51PuwhcBRYiQtSQMWSkhUtPkDN12mA5UMaejDAfnFgbURt8Y1NxpkncIcOR6C5lj1qaVscwkVUS7DpDSmcPcV5tQT00UNwOOuGd"
+);
 
 const Payment = () => {
   // TODO Gérer l'exception lorsque l'utilisateur accède cette page directement en entrant directement l'URL car dans ce cas pas de title/price et la page crashe
