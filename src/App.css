@@ -503,3 +503,66 @@ div.offerdiv > img:first-child {
   border: none;
   border-radius: 5px;
 }
+
+/* --------------------------------------------------------- */
+/* ----------------------PAYMENT---------------------------- */
+/* --------------------------------------------------------- */
+
+.paymentform {
+  padding: 30px;
+  height: auto;
+  width: 500px;
+  margin: 20px auto;
+  background-color: white;
+}
+
+.paymentform h2 {
+  color: #9c9c9c;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.paymentdetail {
+  display: flex;
+  justify-content: space-between;
+  color: #666666;
+  font-size: 18px;
+  height: 25px;
+}
+
+.lastpaymentdetail {
+  padding-bottom: 50px;
+  border-bottom: 1px solid #666666;
+}
+
+.paymenttotal {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  margin: 30px 0;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.paymentrecap {
+  text-align: justify;
+  padding-bottom: 10px;
+}
+
+.paymentrecap span {
+  font-weight: bold;
+}
+
+.paymentbutton {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.paymentbutton:hover {
+  cursor: pointer;
+}
+
+.paymentconfirm {
+  text-align: center;
+  margin: 25px 0;
+  font-size: 25px;
+  font-weight: 600;
+}

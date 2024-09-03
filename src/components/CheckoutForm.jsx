@@ -86,12 +86,20 @@ const CheckoutForm = ({ title, price }) => {
 
   //   TODO Rajouter une requête Put qui rajoute un paramètre à l'article indiquant qu'il est vendu puis rajouter ce paramètre dans les filtres
   return success ? (
-    <p>Merci pour votre achat !</p>
+    <p className="paymentconfirm">Merci pour votre achat !</p>
   ) : (
-    <form onSubmit={handleSubmit}>
+    <form
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      onSubmit={handleSubmit}
+    >
       <PaymentElement />
       {/* SI stripe pas chargé OU élément pas chargé OU isPaying true alors disable*/}
-      <button disabled={!stripe || !elements || isPaying}>Payer</button>
+      <button
+        className="paymentbutton"
+        disabled={!stripe || !elements || isPaying}
+      >
+        Payer
+      </button>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </form>
   );

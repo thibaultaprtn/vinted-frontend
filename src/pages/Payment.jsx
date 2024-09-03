@@ -32,22 +32,22 @@ const Payment = () => {
     // Le composant Elements doit contenir toute notre logique de paiement
     // On lui donner la preuve que nous sommes connectés et les options de paiement
     <div className="paymentform">
-      <p>Résumé de la commande</p>
-      <p style={{ display: "flex", justifyContent: "space-between" }}>
+      <h2>Résumé de la commande</h2>
+      <p className="paymentdetail">
         <span>Commande</span> <span>{price}</span>
       </p>
-      <p style={{ display: "flex", justifyContent: "space-between" }}>
+      <p className="paymentdetail">
         <span>Frais protection acheteurs</span> <span>0.40 €</span>
       </p>
-      <p style={{ display: "flex", justifyContent: "space-between" }}>
+      <p className="paymentdetail lastpaymentdetail">
         <span>Frais de port</span> <span>0.80 €</span>
       </p>
 
-      <p style={{ display: "flex", justifyContent: "space-between" }}>
+      <p className="paymenttotal">
         <span>Total</span> <span>{pricetot} €</span>
       </p>
 
-      <p>
+      <p className="paymentrecap">
         Il ne vous reste plus qu'une étape pour vous offrir <span>{title}</span>
         . Vous allez payer <span>{pricetot} € </span>(frais de protextion et
         frais de port inclus).
