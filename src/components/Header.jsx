@@ -135,8 +135,7 @@ const Header = ({
             }
           }}
         >
-          {" "}
-          Vends tes articles{" "}
+          Vends tes articles
         </button>
       </div>
     </header>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const backurl = "http://localhost:3000";
+const backurl = process.env.BACKURL;
 import Cookies from "js-cookie";
 import { IoClose } from "react-icons/io5";
 

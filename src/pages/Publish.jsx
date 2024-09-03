@@ -2,11 +2,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../styles/publish.css";
 import { SiZebpay } from "react-icons/si";
-const backurl = "http://localhost:3000";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import React, { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
+import { Dropzone, useDropzone } from "react-dropzone";
+
+const backurl = process.env.BACKURL;
 
 function MyDropzone() {
   const onDrop = useCallback((acceptedFiles) => {
@@ -27,6 +28,7 @@ function MyDropzone() {
 }
 
 const Publish = ({ setDisplaySuccessPublish }) => {
+  //TODO Faire un useEffect qui permette d'ouvrir le login si jamais le cookies n'est pas présent
   // Idée : Faire un handclick event
   const navigate = useNavigate();
   const [body, setBody] = useState({
@@ -50,7 +52,6 @@ const Publish = ({ setDisplaySuccessPublish }) => {
   // const [price, setPrice] = useState(0);
 
   const [pictures, setPictures] = useState(null);
-
   const [isWaiting, setIsWaiting] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -76,16 +77,12 @@ const Publish = ({ setDisplaySuccessPublish }) => {
 
       // console.log("formData==>", formData);
 
-      const response = await axios.post(
-        "http://localhost:3000/offer/publish",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("token")}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${backurl}/offer/publish`, formData, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log(response);
 
@@ -103,8 +100,11 @@ const Publish = ({ setDisplaySuccessPublish }) => {
       <form onSubmit={handleSubmit}>
         {/* {MyDropzone()} */}
         <div style={{ display: "flex" }}>
+          {/* html for est l'id auquel on veut le lier */}
+          <label htmlFor="picture-input">Ajoute ta photo</label>
           <input
-            style={{ flexShrink: 0 }}
+            id="picture-input"
+            style={{ flexShrink: 0, display: "none" }}
             type="file"
             multiple="multiple"
             onChange={(event) => {
@@ -124,6 +124,9 @@ const Publish = ({ setDisplaySuccessPublish }) => {
               // console.log(typeof pictures);
             }}
           />
+          TODO Faire une boucle sur l'ensemble des photos
+          {/* Faire une boucle sur l'ensemble des photos dans pictures*/}
+          {/* {pictures && (<img src={URL.createObjectURL(pictures)}></img>)} */}
         </div>
         <div>
           <p>
@@ -140,8 +143,7 @@ const Publish = ({ setDisplaySuccessPublish }) => {
           </p>
           <p>
             <span>Décris ton article</span>
-            {/* TODO Remplacer par un text_area */}
-            <input
+            <textarea
               type="text"
               value={body.description}
               onChange={(event) => {

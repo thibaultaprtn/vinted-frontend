@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-const backurl = "http://localhost:3000";
+const backurl = process.env.BACKURL;
 
 const Offer = () => {
   const { id } = useParams();
