@@ -5,15 +5,43 @@ body {
 .container2 {
   width: 1200px;
   margin: 0 auto;
+  display: flex;
 }
 
 .publishform {
+  margin: 0 auto;
+  width: 60%;
   padding: 30px 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+
+/* --------------------------------------------------------- */
+/* ----------------------PUBLISH------------------------------ */
+/* --------------------------------------------------------- */
+
+#publishpicinput {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed lightgrey;
+  font-size: 20px;
+  color: grey;
+  font-weight: normal;
+}
+
+#publishpicinput:hover {
+  cursor: pointer;
+}
+
+.publishdescription {
+  height: 100px;
+  width: 80%;
 }
 
 form > div {
@@ -32,4 +60,8 @@ form > div > p > span {
 }
 form > div > p > input {
   flex: 1;
+}
+
+.publishcheckbox {
+  justify-self: flex-start;
 }

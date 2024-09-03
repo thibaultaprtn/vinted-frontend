@@ -29,7 +29,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
             Cookies.set("token", response.data.token, { expires: 7 });
             // navigate("/");
             // TODO Est ce qu'il vaut mieux aller sur Publish ou sur Home à ce moment la ?
-            navigate("/publish");
+            navigate("/");
             setDisplayLogin(false);
           } catch (error) {
             console.log(error.response.data);
@@ -66,6 +66,7 @@ const Loginmodal = ({ setDisplayLogin, setDisplaySignup }) => {
           Se connecter
         </button>
         <p
+          style={{ textAlign: "center" }}
           onClick={() => {
             setDisplaySignup(true);
             setDisplayLogin(false);

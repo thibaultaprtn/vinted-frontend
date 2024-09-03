@@ -50,7 +50,13 @@ const Header = ({
               setSearch(event.target.value);
             }}
           />
-          <div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
             {/* <input type="text" /> */}
             {/* <label htmlFor="sort_choice">Trier par prix</label>
             <input
@@ -62,8 +68,11 @@ const Header = ({
               }}
             /> */}
             <div>
-              <label for="prix">Trier par prix : </label>
+              <label className="sortinglabel" for="prix">
+                Trier par prix :{" "}
+              </label>
               <select
+                style={{ borderColor: "#757575", borderRadius: 3 }}
                 name="prix"
                 id="sortOptions"
                 onChange={(event) => {
@@ -78,6 +87,12 @@ const Header = ({
             </div>
 
             <input
+              style={{
+                borderRadius: 3,
+                border: "none",
+                backgroundColor: "#F5F6F7",
+                padding: 5,
+              }}
               type="number"
               placeholder="Prix Minimum"
               value={priceMin}
@@ -86,6 +101,12 @@ const Header = ({
               }}
             />
             <input
+              style={{
+                borderRadius: 3,
+                border: "none",
+                backgroundColor: "#F5F6F7",
+                padding: 5,
+              }}
               type="number"
               placeholder="Prix Maximum"
               value={priceMax}

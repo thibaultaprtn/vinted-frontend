@@ -107,7 +107,9 @@ const Publish = ({
         {/* {MyDropzone()} */}
         <div style={{ display: "flex" }}>
           {/* html for est l'id auquel on veut le lier */}
-          <label htmlFor="picture-input">Ajoute ta photo</label>
+          <label id="publishpicinput" htmlFor="picture-input">
+            Ajoute ta photo
+          </label>
           <input
             id="picture-input"
             style={{ flexShrink: 0, display: "none" }}
@@ -130,7 +132,7 @@ const Publish = ({
               // console.log(typeof pictures);
             }}
           />
-          TODO Faire une boucle sur l'ensemble des photos
+          {/* TODO Faire une boucle sur l'ensemble des photos */}
           {/* Faire une boucle sur l'ensemble des photos dans pictures*/}
           {/* {pictures && (<img src={URL.createObjectURL(pictures)}></img>)} */}
         </div>
@@ -150,6 +152,7 @@ const Publish = ({
           <p>
             <span>Décris ton article</span>
             <textarea
+              className="publishdescription"
               type="text"
               value={body.description}
               onChange={(event) => {
@@ -235,7 +238,7 @@ const Publish = ({
               }}
             />
           </p>
-          <input type="checkbox" />
+          <input className="publishflexbox" type="checkbox" />
         </div>
         <button disable={isWaiting} type="submit">
           Soumettre

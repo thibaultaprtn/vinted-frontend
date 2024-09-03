@@ -9,16 +9,18 @@ const Successpublish = ({
     <>
       <div className="backgroundmodal"></div>
       <div className="successbox">
-        L'annonce a bien été publiée !
+        <p>L'annonce a bien été publiée !</p>
         <button
+          className="successbutton"
           onClick={() => {
             navigate("/publish");
             setDisplaySuccessPublish(false);
           }}
         >
-          soumettre une nouvelle annonce
+          Soumettre une nouvelle annonce
         </button>
         <button
+          className="successbutton"
           onClick={() => {
             navigate("/");
             setDisplaySuccessPublish(false);

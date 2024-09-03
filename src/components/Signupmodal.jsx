@@ -96,7 +96,12 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
           }}
         />
 
+        <label className="signuppicinput" htmlFor="signup-picture-input">
+          Ajoute ta photo
+        </label>
         <input
+          style={{ display: "none" }}
+          id="signup-picture-input"
           type="file"
           onChange={(event) => {
             setPicture(event.target.files[0]);
@@ -123,8 +128,12 @@ const Signupmodal = ({ setDisplaySignup, setDisplayLogin }) => {
           <span style={{ fontSize: 13 }}>Souscrire à la newsletter</span>
         </div>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        <button type="submit"> S'inscrire</button>
+        <button id="signupsubmitbutton" type="submit">
+          {" "}
+          S'inscrire
+        </button>
         <p
+          style={{ textAlign: "center" }}
           onClick={() => {
             setDisplayLogin(true), setDisplaySignup(false);
           }}
