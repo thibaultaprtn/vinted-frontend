@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.8.0",
-    "@stripe/stripe-js": "^4.4.0",
+    "@stripe/stripe-js": "^4.5.0",
     "axios": "^1.7.5",
     "create-react-app": "^5.0.1",
     "dotenv": "^16.4.5",
